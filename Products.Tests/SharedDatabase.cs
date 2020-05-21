@@ -16,7 +16,7 @@ namespace Products.Tests
 
         public SharedDatabase()
         {
-            Connection = new NpgsqlConnection(@"Host=localhost;Port=5432;Database=products;Username=postgres;Password=1234QWER+");
+            Connection = new NpgsqlConnection(@"Host=localhost;Port=5432;Database=products;Username=postgres;Password=admin");
             Seed();
             Connection.Open();
         }
