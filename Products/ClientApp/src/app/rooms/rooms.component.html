@@ -1,0 +1,29 @@
+<h2>Мои комнаты</h2>
+
+<button class="button btn-primary" (click)="isCreatingRoom=!isCreatingRoom">Создать новую комнату</button>
+<div *ngIf="isCreatingRoom==true">
+  <button class="close" (click)="isCreatingRoom=false">x</button>
+  <form>
+    <div class="form-group col-xs-2">
+      <label for="name">Название</label>
+      <input #name id="name" class="form-control" type="text" required maxlength="30" placeholder="название" />
+    </div>
+
+    <div class="form-group col-xs-2">
+      <label for="password">Пароль</label>
+      <input #password id="password" class="form-control" type="password" required maxlength="30" placeholder="пароль" />
+    </div>
+
+    <button (click)="createRoom(name.value, password.value)" class="btn btn-primary">Создать</button>
+  </form>
+</div>
+
+<div *ngIf="rooms | async">
+  <div *ngFor="let room of rooms | async" class="card" style="width: 100%;">
+    <div class="card-body">
+      <h5 class="card-title">{{room.name}}</h5>
+      <a href="./room/{{room.id}}" class="btn btn-primary">Войти</a>
+    </div>
+  </div>
+</div>
+<p *ngIf="(rooms | async)?.length==0">Здесь будут отображаться комнаты, в которые вы уже зашли</p>

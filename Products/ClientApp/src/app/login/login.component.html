@@ -1,0 +1,14 @@
+<h2>авторизация</h2>
+
+<form>
+  <div class="form-group">
+    <label for="username">имя пользователя</label>
+    <input type="text" #username class="form-control" id="username" placeholder="логин">
+  </div>
+  <div class="form-group">
+    <label for="password">пароль</label>
+    <input type="password" #password class="form-control" id="password" placeholder="пароль">
+  </div>
+  <button (click)="tryLogin(username.value, password.value)" class="btn btn-primary">Войти</button>
+</form>
+

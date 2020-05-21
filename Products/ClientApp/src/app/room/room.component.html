@@ -1,0 +1,39 @@
+<div id="passwordfield" class="form-group" *ngIf="isAuth==false">
+  <label for="id">Введите пароль от комнаты</label>
+  <input type="text" id="password" #password class="form-control" placeholder="пароль от комнаты"/>
+  <button class="btn-primary" (click)="tryEnterUsingPassword(password.value)">Войти</button>
+</div>
+
+<div id="roomContent" hidden>
+  <div class="products-container">
+    <form class="form-inline">
+      <div class="form-group mx-sm-3 mb-2">
+        <label for="productname" class="sr-only">Введите название продукта</label>
+        <input type="text" class="form-control" #productname id="productname" placeholder="название продукта">
+      </div>
+      <button (click)="addProduct(productname.value)" class="btn btn-primary mb-2">добавить</button>
+      <button class="btn btn-primary mb-2 clear-button" (click)="clearProducts()">очистить список</button>
+    </form>
+
+    <ul id="products">
+    </ul>
+  </div>
+
+  <div class="participants">
+    <h3 style="text-align:center">участники комнаты</h3>
+    <ul id="users">
+    </ul>
+  </div>
+
+  <div class="chat">
+    <h3 style="text-align:center">чат</h3>
+    <textarea id="messages" class="textarea-messages" readonly></textarea>
+    <div class="chat-input">
+      <textarea id="newmessage" class="chat-input-textarea"></textarea>
+      <button class="btn-primary send-message-button" (click)="sendMessage()">отправить</button>
+    </div>
+
+  </div>
+</div>
+
+

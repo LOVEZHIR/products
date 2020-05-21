@@ -1,0 +1,39 @@
+<header>
+  <nav
+    class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3"
+  >
+    <div class="container">
+      <a class="navbar-brand" [routerLink]="['/']">Products</a>
+      <a class="navbar-brand" *ngIf="getUser()!=null"  [routerLink]="['/rooms']">Комнаты</a>
+      <button class="navbar-toggler"
+              type="button"
+              data-toggle="collapse"
+              data-target=".navbar-collapse"
+              aria-label="Toggle navigation"
+              [attr.aria-expanded]="isExpanded"
+              (click)="toggle()">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse"
+           [ngClass]="{ show: isExpanded }">
+        <ul class="navbar-nav flex-black">
+          <li class="nav-item" *ngIf="getUser()!=null&&getRole()=='admin'" [routerLinkActive]="['link-active']">
+            <a class="nav-link text-dark" [routerLink]="['/']">Админка</a>
+          </li>
+          <li class="nav-item" *ngIf="getUser()==null" [routerLinkActive]="['link-active']">
+            <a class="nav-link text-dark" [routerLink]="['/login']">Логин</a>
+          </li>
+          <li class="nav-item" *ngIf="getUser()==null" [routerLinkActive]="['link-active']">
+            <a class="nav-link text-dark" [routerLink]="['/registration']">Регистрация</a>
+          </li>
+          <li class="nav-item" *ngIf="getUser()!=null" [routerLinkActive]="['link-active']">
+            <a class="nav-link text-dark" [routerLink]="['/profile']">Личный кабинет</a>
+          </li>
+          <li class="nav-item" *ngIf="getUser()!=null" [routerLinkActive]="['link-active']">
+            <a class="nav-link text-dark" (click)="logout()" [routerLink]="['/profile']">Выйти</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
